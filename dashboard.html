@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard – Chandler Nursing Schedule</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.js'></script>
+</head>
+<body>
+  <div id="dashboard">
+    <header>
+      <h1>Chandler Nursing Schedule</h1>
+      <div>
+        <span id="userDisplay">Welcome</span>
+        <button class="small-btn" onclick="logout()">Logout</button>
+      </div>
+    </header>
+
+    <nav>
+      <button onclick="showCalendar()">Calendar</button>
+      <button onclick="showEmployees()">Employees</button>
+    </nav>
+
+    <!-- Calendar -->
+    <section id="calendarSection">
+      <div id="calendar"></div>
+    </section>
+
+    <!-- Employee List -->
+    <section id="employeesSection" style="display:none;">
+      <h2>All Employees</h2>
+      <table id="empTable">
+        <thead><tr><th>Name</th><th>Phone</th><th>Email</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </div>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
