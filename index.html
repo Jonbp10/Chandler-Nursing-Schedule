@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chandler Nursing Schedule</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <h1>Chandler Nursing Schedule</h1>
+
+    <div class="input-group">
+      <input type="text" id="eventInput" placeholder="Event / Shift (e.g. Night Shift – ICU)">
+      <input type="datetime-local" id="eventTime">
+      <button onclick="addEvent()">Add Event</button>
+    </div>
+
+    <ul id="scheduleList"></ul>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
