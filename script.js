@@ -206,14 +206,15 @@ function saveShift() {
   })
   .then(() => {
     showMsg('shiftMsg', 'Shift added!', false);
-    
-    // REFRESH CALENDAR
+
+    // REFRESH CALENDAR IMMEDIATELY
     if (calendar) {
       calendar.refetchEvents();
     }
 
+    // Go back to calendar after 1 second
     setTimeout(() => {
-      showCalendar();  // Go back to calendar
+      showCalendar();
     }, 1000);
   })
   .catch(err => {
@@ -222,32 +223,39 @@ function saveShift() {
   });
 }
 
-// Update calendar events to show unit + name + shift
+let calendar;  // ← Must be global
+
 function initCalendar() {
   const calEl = document.getElementById('calendar');
+  if (!calEl) return;
+
   calendar = new FullCalendar.Calendar(calEl, {
     initialView: 'dayGridMonth',
-    headerToolbar: { 
-      left: 'prev,next today', 
-      center: 'title', 
-      right: 'dayGridMonth,timeGridWeek' 
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek'
     },
-    events: (info, successCB, failureCB) => {
+    events: function(fetchInfo, successCallback, failureCallback) {
       db.collection('shifts').get()
         .then(snap => {
-          const evts = [];
+          const events = [];
           snap.forEach(doc => {
             const d = doc.data();
-            evts.push({
+            events.push({
               title: `${d.unit} – ${d.assignedName} [${d.shiftType}]`,
               start: d.start,
               end: d.end
             });
           });
-          successCB(evts);
+          successCallback(events);
         })
-        .catch(failureCB);
+        .catch(err => {
+          console.error("Error loading shifts:", err);
+          failureCallback(err);
+        });
     }
   });
+
   calendar.render();
 }
