@@ -190,6 +190,8 @@ function saveShift() {
   const startTime = `${date}T${startH}:00`;
   const endTime = `${date}T${endH}:00`;
 
+  showMsg('shiftMsg', 'Saving shift...', false);
+
   db.collection('shifts').add({
     unit: unit,
     assignedTo: empId,
@@ -201,12 +203,20 @@ function saveShift() {
   })
   .then(() => {
     showMsg('shiftMsg', 'Shift added!', false);
+    
+    // REFRESH CALENDAR
+    if (calendar) {
+      calendar.refetchEvents();
+    }
+
     setTimeout(() => {
-      showCalendar();
-      calendar.refetchEvents();  // Refresh calendar
+      showCalendar();  // Go back to calendar
     }, 1000);
   })
-  .catch(err => showMsg('shiftMsg', 'Error: ' + err.message));
+  .catch(err => {
+    console.error("Save shift error:", err);
+    showMsg('shiftMsg', 'Error: ' + err.message);
+  });
 }
 
 // Update calendar events to show unit + name + shift
