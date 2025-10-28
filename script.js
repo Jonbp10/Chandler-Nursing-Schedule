@@ -1,3 +1,4 @@
+let calendar;
 /* ==== Firebase Config – REPLACE WITH YOUR OWN ==== */
 const firebaseConfig = {
   apiKey: "AIzaSyDBbTKOodVAIS-BEskbu0BDO6zytar-P1g",
@@ -106,7 +107,7 @@ function loadEmployees() {
 }
 
 /* ==== CALENDAR (FullCalendar) ==== */
-let calendar;
+
 function initCalendar() {
   const calEl = document.getElementById('calendar');
   calendar = new FullCalendar.Calendar(calEl, {
