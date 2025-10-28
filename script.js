@@ -223,8 +223,6 @@ function saveShift() {
   });
 }
 
-let calendar;  // ← Must be global
-
 function initCalendar() {
   const calEl = document.getElementById('calendar');
   if (!calEl) return;
