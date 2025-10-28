@@ -26,10 +26,12 @@
     <div id="signupMsg" class="msg"></div>
   </div>
 
-  <!-- Firebase -->
+  <!-- Firebase SDKs – keep them in this order -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <!-- YOUR LOGIC – **must be AFTER the Firebase SDKs** -->
   <script src="script.js"></script>
 </body>
 </html>
