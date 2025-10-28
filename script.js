@@ -135,8 +135,10 @@ function initCalendar() {
 /* ==== SECTION SWITCH ==== */
 function showCalendar() {
   document.getElementById('employeesSection').style.display = 'none';
+  document.getElementById('addShiftSection').style.display = 'none';  // ← HIDE ADD SHIFT
   document.getElementById('calendarSection').style.display = 'block';
 }
+
 function showEmployees() {
   document.getElementById('calendarSection').style.display = 'none';
   document.getElementById('employeesSection').style.display = 'block';
@@ -150,8 +152,9 @@ function showAddShift() {
   document.getElementById('employeesSection').style.display = 'none';
   document.getElementById('addShiftSection').style.display = 'block';
 
-  loadEmployeesForShift();  // Populate dropdown
-  document.getElementById('shiftDate').valueAsDate = new Date();  // Today
+  loadEmployeesForShift();
+  document.getElementById('shiftDate').valueAsDate = new Date();
+  document.getElementById('shiftMsg').textContent = '';  // Clear message
 }
 
 function loadEmployeesForShift() {
