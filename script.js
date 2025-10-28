@@ -1,11 +1,11 @@
 /* ==== Firebase Config – REPLACE WITH YOUR OWN ==== */
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT",
-  storageBucket: "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "123456789",
-  appId: "1:123456789:web:abc123def456"
+  apiKey: "AIzaSyDBbTKOodVAIS-BEskbu0BDO6zytar-P1g",
+  authDomain: "chandler-nursing-schedul-e4252.firebaseapp.com",
+  projectId: "chandler-nursing-schedul-e4252",
+  storageBucket: "chandler-nursing-schedul-e4252.firebasestorage.app",
+  messagingSenderId: "436695645809",
+  appId: "1:436695645809:web:ec234d03a926c62ae125d0",
 };
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
