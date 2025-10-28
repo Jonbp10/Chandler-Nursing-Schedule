@@ -141,3 +141,100 @@ function showEmployees() {
   document.getElementById('calendarSection').style.display = 'none';
   document.getElementById('employeesSection').style.display = 'block';
 }
+
+// ==== ADD SHIFT FORM ====
+let employees = [];
+
+function showAddShift() {
+  document.getElementById('calendarSection').style.display = 'none';
+  document.getElementById('employeesSection').style.display = 'none';
+  document.getElementById('addShiftSection').style.display = 'block';
+
+  loadEmployeesForShift();  // Populate dropdown
+  document.getElementById('shiftDate').valueAsDate = new Date();  // Today
+}
+
+function loadEmployeesForShift() {
+  db.collection('users').orderBy('lastName').get()
+    .then(snap => {
+      employees = [];
+      const select = document.getElementById('employeeSelect');
+      select.innerHTML = '<option value="">Select Employee</option>';
+
+      snap.forEach(doc => {
+        const d = doc.data();
+        const full = `${d.firstName} ${d.lastName.charAt(0)}.`;
+        employees.push({ id: doc.id, name: full });
+        const opt = document.createElement('option');
+        opt.value = doc.id;
+        opt.textContent = full;
+        select.appendChild(opt);
+      });
+    });
+}
+
+function saveShift() {
+  const unit = document.getElementById('unitSelect').value;
+  const empId = document.getElementById('employeeSelect').value;
+  const shift = document.getElementById('shiftSelect').value;
+  const date = document.getElementById('shiftDate').value;
+
+  if (!unit || !empId || !shift || !date) {
+    return showMsg('shiftMsg', 'Please fill all fields');
+  }
+
+  const emp = employees.find(e => e.id === empId);
+  if (!emp) return showMsg('shiftMsg', 'Invalid employee');
+
+  const [startH, endH] = shift.split('-');
+  const startTime = `${date}T${startH}:00`;
+  const endTime = `${date}T${endH}:00`;
+
+  db.collection('shifts').add({
+    unit: unit,
+    assignedTo: empId,
+    assignedName: emp.name,
+    title: `${unit} - ${emp.name}`,
+    start: startTime,
+    end: endTime,
+    shiftType: shift
+  })
+  .then(() => {
+    showMsg('shiftMsg', 'Shift added!', false);
+    setTimeout(() => {
+      showCalendar();
+      calendar.refetchEvents();  // Refresh calendar
+    }, 1000);
+  })
+  .catch(err => showMsg('shiftMsg', 'Error: ' + err.message));
+}
+
+// Update calendar events to show unit + name + shift
+function initCalendar() {
+  const calEl = document.getElementById('calendar');
+  calendar = new FullCalendar.Calendar(calEl, {
+    initialView: 'dayGridMonth',
+    headerToolbar: { 
+      left: 'prev,next today', 
+      center: 'title', 
+      right: 'dayGridMonth,timeGridWeek' 
+    },
+    events: (info, successCB, failureCB) => {
+      db.collection('shifts').get()
+        .then(snap => {
+          const evts = [];
+          snap.forEach(doc => {
+            const d = doc.data();
+            evts.push({
+              title: `${d.unit} – ${d.assignedName} [${d.shiftType}]`,
+              start: d.start,
+              end: d.end
+            });
+          });
+          successCB(evts);
+        })
+        .catch(failureCB);
+    }
+  });
+  calendar.render();
+}

@@ -39,3 +39,46 @@ nav button:hover { background:#2980b9; }
 #empTable { width:100%; border-collapse:collapse; background:#fff; border-radius:8px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.1); }
 #empTable th, #empTable td { padding:12px; text-align:left; border-bottom:1px solid #ddd; }
 #empTable th { background:#f8f9fa; font-weight:bold; }
+
+/* Add Shift Form */
+#addShiftSection {
+  max-width: 500px;
+  margin: 20px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,.1);
+}
+.form-group {
+  margin-bottom: 15px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+.form-group select,
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+.submit-btn {
+  background: #27ae60;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.submit-btn:hover { background: #219653; }
+.cancel-btn {
+  background: #95a5a6;
+  color: white;
+  margin-left: 10px;
+}
+.cancel-btn:hover { background: #7f8c8d; }
