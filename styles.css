@@ -1,17 +1,28 @@
-/* Reset & basic layout */
-* { box-sizing: border-box; margin:0; padding:0; }
-body { font-family: Arial, Helvetica, sans-serif; background:#f4f7fb; padding:20px; }
-#app { max-width:600px; margin:auto; background:#fff; padding:25px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,.1); }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; background: #f4f7fb; color: #333; }
+h1, h2 { text-align: center; margin-bottom: 20px; color: #2c3e50; }
 
-/* Title */
-h1 { text-align:center; color:#2c3e50; margin-bottom:20px; }
+/* Auth Section */
+#authSection { display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+.auth-container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 400px; width: 100%; }
+input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; }
+button { width: 100%; padding: 12px; background: #27ae60; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; }
+button:hover { background: #219653; }
+a { color: #27ae60; text-decoration: none; }
 
-/* Input group */
-.input-group { display:flex; flex-direction:column; gap:10px; margin-bottom:20px; }
-input { padding:12px; font-size:16px; border:1px solid #ccc; border-radius:6px; }
-button { padding:12px; font-size:16px; background:#27ae60; color:#fff; border:none; border-radius:6px; cursor:pointer; }
-button:hover { background:#219653; }
+/* Dashboard */
+#dashboard { max-width: 1200px; margin: 0 auto; padding: 20px; }
+header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+nav { display: flex; gap: 10px; margin-bottom: 20px; }
+nav button { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 6px; cursor: pointer; }
+nav button:hover { background: #2980b9; }
 
-/* List */
-#scheduleList { list-style:none; }
-#scheduleList li { background:#ecf0f1; padding:12px; margin:8px 0; border-radius:6px; font-size:15px; display:flex; justify-content:space-between; align-items:center; }
+/* Calendar */
+#calendar { background: white; border-radius: 8px; padding: 10px; }
+.fc { font-size: 14px; }
+.fc-event { background: #27ae60; color: white; border-radius: 4px; }
+
+/* Employees Table */
+#employeesTable { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+#employeesTable th, #employeesTable td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+#employeesTable th { background: #f8f9fa; font-weight: bold; }

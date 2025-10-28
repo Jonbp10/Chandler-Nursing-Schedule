@@ -5,22 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chandler Nursing Schedule</title>
   <link rel="stylesheet" href="styles.css">
+  <!-- FullCalendar CDN -->
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.js'></script>
 </head>
 <body>
-  <div id="app">
-    <h1>Chandler Nursing Schedule</h1>
-
-    <div class="input-group">
-      <input type="text" id="eventInput" placeholder="Event / Shift (e.g. Night Shift – ICU)">
-      <input type="datetime-local" id="eventTime">
-      <button onclick="addEvent()">Add Event</button>
+  <!-- Login/Sign-Up Section (Hidden after login) -->
+  <div id="authSection">
+    <div class="auth-container">
+      <h1>Chandler Nursing Schedule</h1>
+      <div id="loginForm">
+        <h2>Login</h2>
+        <input type="email" id="loginEmail" placeholder="Email">
+        <input type="password" id="loginPassword" placeholder="Password">
+        <button onclick="login()">Sign In</button>
+        <p>Not registered? <a href="#" onclick="showSignup()">Create Account</a></p>
+      </div>
+      <div id="signupForm" style="display:none;">
+        <h2>Create Account</h2>
+        <input type="text" id="signupName" placeholder="Full Name">
+        <input type="email" id="signupEmail" placeholder="Email">
+        <input type="tel" id="signupPhone" placeholder="Phone (e.g., +1-555-1234)">
+        <input type="password" id="signupPassword" placeholder="Password">
+        <button onclick="signup()">Create Account</button>
+        <p>Have an account? <a href="#" onclick="showLogin()">Sign In</a></p>
+      </div>
     </div>
-
-    <ul id="scheduleList"></ul>
   </div>
 
-  <!-- Firebase SDK -->
+  <!-- Dashboard (Shown after login) -->
+  <div id="dashboard" style="display:none;">
+    <header>
+      <h1>Dashboard</h1>
+      <button onclick="logout()">Logout</button>
+    </header>
+    <nav>
+      <button onclick="showCalendar()">Calendar</button>
+      <button onclick="showEmployees()">Employees</button>
+    </nav>
+
+    <!-- Calendar View -->
+    <div id="calendarSection">
+      <div id="calendar"></div>
+    </div>
+
+    <!-- Employee List -->
+    <div id="employeesSection" style="display:none;">
+      <h2>Employee List</h2>
+      <table id="employeesTable">
+        <thead><tr><th>Name</th><th>Phone</th><th>Email</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="script.js"></script>
 </body>
