@@ -1,84 +1,206 @@
+/* ==== BRAND COLORS ==== */
+:root {
+  --primary: #A8C63F;     /* Lime Green */
+  --secondary: #6B8E23;  /* Olive Green */
+  --text-heading: #333333;
+  --text-body: #666666;
+  --bg-page: #F7F7F7;
+  --bg-card: #FFFFFF;
+  --border: #DDDDDD;
+}
+
 /* ==== Global ==== */
-* { box-sizing: border-box; margin:0; padding:0; }
-body { font-family: Arial, sans-serif; background:#f4f7fb; color:#333; }
-.center { text-align:center; margin-top:15px; }
-.msg { margin-top:10px; color:#e74c3c; font-weight:bold; }
-button { cursor:pointer; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg-page);
+  color: var(--text-body);
+  line-height: 1.6;
+}
+
+/* ==== Headings ==== */
+h1, h2, h3 {
+  color: var(--text-heading);
+  font-weight: 600;
+}
+h1 { font-size: 2rem; margin-bottom: 1rem; }
+h2 { font-size: 1.5rem; margin: 1.5rem 0 1rem; }
+
+/* ==== Links & Buttons ==== */
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+a:hover { color: var(--secondary); }
+
+button, .btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+button:hover, .btn:hover {
+  background: var(--secondary);
+}
+.small-btn {
+  background: #e74c3c;
+  padding: 6px 12px;
+  font-size: 14px;
+}
+.small-btn:hover { background: #c0392b; }
 
 /* ==== Auth Pages ==== */
-.auth-page { display:flex; justify-content:center; align-items:center; min-height:100vh; }
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
 .auth-box {
-  background:#fff; padding:30px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,.1);
-  width:100%; max-width:420px;
+  background: var(--bg-card);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 420px;
+  border: 1px solid var(--border);
 }
-.auth-box h1 { margin-bottom:10px; color:#2c3e50; }
-.auth-box h2 { margin-bottom:20px; color:#27ae60; }
+.auth-box h1 {
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+.auth-box h2 {
+  text-align: center;
+  color: var(--text-heading);
+  margin-bottom: 20px;
+}
 .auth-box input {
-  width:100%; padding:12px; margin:8px 0; border:1px solid #ccc; border-radius:6px; font-size:16px;
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 16px;
+  background: #fdfdfd;
 }
-.auth-box button {
-  width:100%; padding:12px; background:#27ae60; color:#fff; border:none; border-radius:6px; font-size:16px;
+.center { text-align: center; margin-top: 15px; }
+.msg {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: bold;
+  min-height: 24px;
 }
-.auth-box button:hover { background:#219653; }
-.auth-box a { color:#27ae60; text-decoration:none; }
 
 /* ==== Dashboard ==== */
-#dashboard { max-width:1200px; margin:20px auto; padding:0 15px; }
-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
-header h1 { margin:0; }
-nav { display:flex; gap:10px; margin-bottom:20px; }
-nav button { padding:10px 20px; background:#3498db; color:#fff; border:none; border-radius:6px; }
-nav button:hover { background:#2980b9; }
-.small-btn { padding:6px 12px; font-size:14px; background:#e74c3c; }
-.small-btn:hover { background:#c0392b; }
+#dashboard {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border);
+}
+header h1 {
+  color: var(--primary);
+}
+nav {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+nav button {
+  background: var(--primary);
+}
+nav button:hover {
+  background: var(--secondary);
+}
 
-/* Calendar */
-#calendar { background:#fff; border-radius:8px; padding:10px; box-shadow:0 2px 8px rgba(0,0,0,.1); }
+/* ==== Calendar ==== */
+#calendar {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  border: 1px solid var(--border);
+}
+.fc-event {
+  background: var(--primary) !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-size: 13px;
+}
 
-/* Employee Table */
-#empTable { width:100%; border-collapse:collapse; background:#fff; border-radius:8px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.1); }
-#empTable th, #empTable td { padding:12px; text-align:left; border-bottom:1px solid #ddd; }
-#empTable th { background:#f8f9fa; font-weight:bold; }
+/* ==== Employee Table ==== */
+#empTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-card);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  border: 1px solid var(--border);
+}
+#empTable th, #empTable td {
+  padding: 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+#empTable th {
+  background: var(--bg-page);
+  font-weight: 600;
+  color: var(--text-heading);
+}
 
-/* Add Shift Form */
+/* ==== Add Shift Form ==== */
 #addShiftSection {
   max-width: 500px;
-  margin: 20px auto;
-  background: white;
-  padding: 25px;
+  margin: 30px auto;
+  background: var(--bg-card);
+  padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,.1);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  border: 1px solid var(--border);
 }
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 18px;
 }
 .form-group label {
   display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #2c3e50;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: var(--text-heading);
 }
 .form-group select,
 .form-group input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
+  padding: 12px;
+  border: 1px solid var(--border);
   border-radius: 6px;
   font-size: 16px;
+  background: #fdfdfd;
 }
 .submit-btn {
-  background: #27ae60;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
+  background: var(--primary);
+  margin-top: 10px;
 }
-.submit-btn:hover { background: #219653; }
 .cancel-btn {
   background: #95a5a6;
-  color: white;
   margin-left: 10px;
 }
 .cancel-btn:hover { background: #7f8c8d; }
