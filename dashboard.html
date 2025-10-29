@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard – Chandler Nursing Schedule</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <div id="dashboard">
+    <header>
+      <h1>Chandler Nursing Schedule</h1>
+      <div>
+        <span id="userDisplay">Welcome</span>
+        <button class="small-btn" onclick="logout()">Logout</button>
+      </div>
+    </header>
+
+    <nav>
+      <button onclick="showCalendar()">Calendar</button>
+      <button onclick="showEmployees()">Employees</button>
+      <button onclick="showAddShift()">+ Add Shift</button>
+    </nav>
+
+    <!-- Calendar Section -->
+    <section id="calendarSection">
+      <div id="calendar"></div>
+    </section>
+
+    <!-- Employees Section -->
+    <section id="employeesSection" style="display:none;">
+      <h2>All Employees</h2>
+      <table id="empTable">
+        <thead><tr><th>Name</th><th>Phone</th><th>Email</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- Add Shift Form -->
+    <section id="addShiftSection" style="display:none;">
+      <h2>Add New Shift</h2>
+      <div class="form-group">
+        <label>Unit:</label>
+        <select id="unitSelect">
+          <option value="">Select Unit</option>
+          <option>House B</option>
+          <option>House D</option>
+          <option>House G</option>
+          <option>Intake</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Employee:</label>
+        <select id="employeeSelect">
+          <option value="">Select Employee</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Shift:</label>
+        <select id="shiftSelect">
+          <option value="">Select Shift</option>
+          <option value="7a-7p">7a - 7p</option>
+          <option value="7p-7a">7p - 7a</option>
+          <option value="10a-10p">10a - 10p</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Date:</label>
+        <input type="date" id="shiftDate" required>
+      </div>
+
+      <button onclick="saveShift()" class="submit-btn">Save Shift</button>
+      <button onclick="showCalendar()" class="cancel-btn">Cancel</button>
+      <div id="shiftMsg" class="msg"></div>
+    </section>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <!-- FullCalendar -->
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.js'></script>
+
+  <!-- YOUR LOGIC – MUST BE LAST -->
+  <script src="script.js"></script>
+</body>
+</html>
